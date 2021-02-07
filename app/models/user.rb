@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :reactions
+
   validates :name, presence:true
   validates :self_introduction, length: { maximum: 500 }
 
