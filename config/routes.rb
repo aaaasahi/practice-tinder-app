@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users,
-    controllers: { registrations: 'registrations' }
+    controllers: { 
+      registrations: 'registrations',
+      sessions: :sessions
+    }
 
   root 'top#index'
 
-  resources :users, only:[:show]
+  resources :users, only:[:index, :show]
 end
