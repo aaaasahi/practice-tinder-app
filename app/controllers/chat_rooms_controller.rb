@@ -17,5 +17,11 @@ class ChatRoomsController < ApplicationController
     end
 
     def show
+        #チャットルーム検索
+        @chat_room = ChatRoom.find(params[:id])
+        #チャットルームにいるユーザー検索
+        @chat_room_user = @chat_room.chat_room_users.where.not(user_id: current_user.id).first.user
+        #チャットメッセージの取得
+        @chat_messages = ChatMessage.where(chat_room: @chat_room)
     end
 end
